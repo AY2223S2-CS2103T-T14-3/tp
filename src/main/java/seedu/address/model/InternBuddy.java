@@ -5,6 +5,8 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
 import seedu.address.model.internship.Internship;
 import seedu.address.model.internship.UniqueInternshipList;
 
@@ -104,6 +106,12 @@ public class InternBuddy implements ReadOnlyInternBuddy {
     }
 
 
+    public void copyInternship(Internship key) {
+        final Clipboard clipboard = Clipboard.getSystemClipboard();
+        final ClipboardContent content = new ClipboardContent();
+        content.putString(key.toString());
+        clipboard.setContent(content);
+    }
 
     //// util methods
 
