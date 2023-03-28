@@ -79,4 +79,26 @@ public class CopyCommandTest {
         assertCommandFailure(copyCommand, model, Messages.MESSAGE_INVALID_INTERNSHIP_DISPLAYED_INDEX);
     }
 
+    @Test
+    public void equals() {
+        CopyCommand copyFirstCommand = new CopyCommand(INDEX_FIRST_INTERNSHIP);
+        CopyCommand copySecondCommand = new CopyCommand(INDEX_SECOND_INTERNSHIP);
+
+        // same object -> returns true
+        assertTrue(copyFirstCommand.equals(copyFirstCommand));
+
+        // same values -> returns true
+        CopyCommand copyFirstCommandCopy = new CopyCommand(INDEX_FIRST_INTERNSHIP);
+        assertTrue(copyFirstCommand.equals(copyFirstCommandCopy));
+
+        // different types -> returns false
+        assertFalse(copyFirstCommand.equals(1));
+
+        // null -> returns false
+        assertFalse(copyFirstCommand.equals(null));
+
+        // different internship -> returns false
+        assertFalse(copyFirstCommand.equals(copySecondCommand));
+    }
+
 }
